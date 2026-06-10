@@ -1,0 +1,15 @@
+*.aux
+*.bcf
+*.log
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.xml
+\build
+master.pdf

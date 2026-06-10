@@ -1,0 +1,125 @@
+\documentclass[
+    a4paper,
+    12pt,
+    parskip=half,
+    ngerman,
+    bibliography=totoc,
+    listof=totoc
+]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\renewcommand{\familydefault}{\sfdefault} % Serifenlose Schrift
+\usepackage[ngerman]{babel}
+\usepackage[autostyle]{csquotes} % Anführungszeichen mit \enquote{text}
+
+\usepackage{graphicx}
+\graphicspath{{media/}}
+\usepackage{wrapfig}    % Für von Schrift umflossene Bilder und Tabellen
+\usepackage[font=small,labelfont=bf, indention=0pt, format=plain]{caption}
+\usepackage{subcaption} % Subcaption bei mehreren Bildern in einer figure
+\usepackage{tabularx}   % Tabellen
+\usepackage{booktabs}   % Horizontale Linien für Tabellen
+\usepackage{acro}       % Abkürzungen
+\usepackage{amsmath}    % Mathematische Symbole
+\usepackage{amssymb}    % \boxtimes Symbol im ai_discalaimer.tex
+
+\usepackage{lipsum} % Lorem Ipsum-Generierung 
+
+% Einbinden von Programmcode (Kommentar entfernen falls benötigt)
+% \usepackage{xcolor}
+% \usepackage{minted}
+% \setminted{
+%     frame=single,
+%     framerule=0.8pt,
+%     framesep=6pt,
+%     rulecolor=\color{black},
+%     breaklines=true,
+%     fontsize=\small,
+%     tabsize=2,
+%     autogobble
+% }
+
+\usepackage[backend=biber,
+    style=ieee,
+    sorting=none,
+    dashed=false
+]{biblatex}
+\addbibresource{literatur.bib}
+
+\usepackage[hidelinks, colorlinks=true, urlcolor=blue, linkcolor=black, citecolor=black]{hyperref}
+
+% ==================================================
+%            BENUTZERDEFINIERTE BEFEHLE
+% ==================================================
+
+\newcommand{\Autor}{<Name einfügen>}
+\newcommand{\Titel}{<Titel einfügen>}
+
+% ==================================================
+%                   ABKÜRZUNGEN
+% ==================================================
+
+% Quick Guide: https://www.namsu.de/Extra/pakete/Acro.html#:~:text=Abk%C3%BCrzungen%20und%20Akronyme%20aufrufen
+% \DeclareAcronym{PDF}{short = PDF, long = Portable Document Format, long-plural = s}
+\DeclareAcronym{PDF}{short = PDF, long = Portable Document Format, long-plural = s}
+
+
+% ==================================================
+%                  BEGINN DOKUMENT
+% ==================================================
+
+\hypersetup{pdftitle={\Titel}, pdfauthor={\Autor}, pdflang={de}}
+\begin{document}
+
+\pagenumbering{roman}
+
+\input{titlepage.tex}
+\newpage
+
+\input{sperrvermerk.tex}
+\newpage
+
+\input{abstract.tex}
+\newpage
+
+\input{ewerkl.tex}
+\newpage
+
+\input{ai_disclaimer.tex}
+\newpage
+
+\tableofcontents
+\newpage
+
+\printacronyms[name=Abkürzungsverzeichnis, heading=section*]
+\newpage
+
+\pagenumbering{arabic}
+
+%        Einleitung
+% =========================
+
+\input{einleitung.tex}
+\newpage
+
+%        Hauptteil
+% =========================
+\input{hauptteil.tex}
+\newpage
+
+
+%           Fazit
+% =========================
+
+\input{fazit.tex}
+\newpage
+
+% ==================================================
+%              ANFANG DER BIBLIOGRAPHIE
+% ==================================================
+
+\printbibliography
+\newpage
+
+\end{document}
